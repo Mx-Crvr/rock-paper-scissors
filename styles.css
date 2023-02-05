@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: #131313;
+}
+
+body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    background-color: #f2f2f2;
+}
+
+h1 {
+    margin-bottom: 0.5em;
+    font-size: 2.5em;
+}
+
+main {
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+  
+}
+
+#intro, .result {
+    font-size: 1.5em;
+}
+
+.score-container {
+    margin-top: 1em;
+    display: flex;
+    border-radius: 0.5em;
+}
+
+.player {
+    padding: 0.5em 1.5em;
+    background-color: #1e90ff;
+    border: 1px solid #131313;
+    border-right: none;
+}
+
+.computer {
+    padding: 0.5em 0.75em;
+    background-color: none;
+    border: 1px solid #131313;
+}
+
+.choices-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    margin-top: 3em;
+}
+
+.card {
+    cursor: pointer;
+    background-color: #131313;
+    padding: 1em;
+    border-radius: 0.8em;
+    transition: all 0.2s linear;
+}
+    .card:hover {
+        transform: scale(0.97);
+        box-shadow: 3px 6px 12px #131313ae;
+    }
+
+.flex-btn {
+    display: flex;
+    align-items: stretch;
+}
+
+button {
+    padding: 0.8em 1.5em;
+    width: 25%;
+    margin: 3em 0em;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    background-color: #1e90ff;
+    border: 1px solid #1e90ff;
+    border-radius: 0.5em;
+    transition: all 0.2s linear;
+    color: #f2f2f2;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+}
+
+button:hover {
+    background-color: #f2f2f2;
+    color: #1e90ff;
+    transform: scale(0.9);
+}
