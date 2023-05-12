@@ -6,14 +6,23 @@ function getComputerChoice() {
     return randomElem;
 };
 
-
-
+const modal = document.getElementById('modal');
+const playAgain = document.getElementById('play-again');
+const image = document.getElementById('image');
+const imgcontainer = document.getElementById('img-container');
+const pScoreDisplay = document.getElementById('player-score')
+const cScoreDisplay = document.getElementById('computer-score')
 let playerScore = 0
 let computerScore = 0
+const finalScore = document.getElementById('final-score');
 
 function round(playerChoice, computerChoice) {
-   
+    const winner = document.getElementById('winner');
+
     if (playerChoice === computerChoice) {
+        winner.innerText = `You both chose ${computerChoice}`;
+        winner.style.color = 'black';
+        image.src = `./imgs/${computerChoice}.svg`
         return 'Draw';
     } else if (
         (playerChoice === 'rock' && computerChoice === 'scissors') || 
@@ -21,34 +30,113 @@ function round(playerChoice, computerChoice) {
         (playerChoice === 'paper' && computerChoice === 'rock')     
         ) {
             playerScore++
-            return `Computer chose ${computerChoice}. Player wins`;
+            pScoreDisplay.innerText = `Player: ${playerScore}`; 
+            cScoreDisplay.innerText = `Computer: ${computerScore}`; 
+            image.src = `./imgs/${computerChoice}.svg`
+            if (computerScore === 5) {
+                pScoreDisplay.style.display = 'none';
+                cScoreDisplay.style.display = 'none';
+                document.getElementById('rock').style.display = 'none';
+                document.getElementById('paper').style.display = 'none';
+                document.getElementById('scissors').style.display = 'none';
+                hideModal();
+                finalScore.innerText = ('Computer won the match by ') + (computerScore - playerScore) + (`, better luck next time`);
+                playAgain.style.display = 'block';
+            } else if (playerScore === 5) {
+                pScoreDisplay.style.display = 'none';
+                cScoreDisplay.style.display = 'none';
+                document.getElementById('rock').style.display = 'none';
+                document.getElementById('paper').style.display = 'none';
+                document.getElementById('scissors').style.display = 'none';
+                hideModal();
+                finalScore.innerText = ('Player won the match by ') + (playerScore - computerScore) + (`, well done!`);
+                playAgain.style.display = 'block';
+            } else {
+                winner.innerText = 'Player wins this round';
+                winner.style.color = 'green';
+                return `Computer chose ${computerChoice}`;
+            }
         } else if (
             (playerChoice === 'rock' && computerChoice === 'paper') || 
             (playerChoice === 'scissors' && computerChoice === 'rock') ||
             (playerChoice === 'paper' && computerChoice === 'scissors')
         ) {
             computerScore++
-            return `Computer chose ${computerChoice}. Computer wins`;
+            pScoreDisplay.innerText = `Player: ${playerScore}`; 
+            cScoreDisplay.innerText = `Computer: ${computerScore}`; 
+            image.src = `./imgs/${computerChoice}.svg`
+            if (computerScore === 5) {
+                pScoreDisplay.style.display = 'none';
+                cScoreDisplay.style.display = 'none';
+                document.getElementById('rock').style.display = 'none';
+                document.getElementById('paper').style.display = 'none';
+                document.getElementById('scissors').style.display = 'none';
+                hideModal();
+                finalScore.innerText = ('Computer won the match by ') + (computerScore - playerScore) + (`, better luck next time`);
+                playAgain.style.display = 'block';
+            } else if (playerScore === 5) {
+                pScoreDisplay.style.display = 'none';
+                cScoreDisplay.style.display = 'none';
+                document.getElementById('rock').style.display = 'none';
+                document.getElementById('paper').style.display = 'none';
+                document.getElementById('scissors').style.display = 'none';
+                hideModal();
+                finalScore.innerText = ('Player won the match by ') + (playerScore - computerScore) + (`, well done`);
+                playAgain.style.display = 'block';
+            } else {
+                winner.innerText = 'Computer wins this round';
+                winner.style.color = 'red';
+                return `Computer chose ${computerChoice}`;
+            }
         }
 }
+
 
 
 function game() {
-    for (let i = 0; i < 1000; i++) {
-        const playerChoice = prompt('rock paper scissors');
-        const computerChoice = getComputerChoice()
-        console.log(round(playerChoice, computerChoice))
-        console.log(`Player: ${playerScore} | Computer: ${computerScore}`)
-
-        if (computerScore === 5) {
-            console.log('computer wins')
-            break;
-        } else if (playerScore === 5) {
-            console.log('Player wins!')
-            
-            break;
+    const answer = document.getElementById('answer');
+    hideModal()
+    document.getElementById('rock').addEventListener('click', () => {
+        answer.innerText = round('rock', getComputerChoice());
+        if (finalScore.innerText !== '') {
+            hideModal()
+        } else {
+            showModal();
         }
-    } 
+    })
+    document.getElementById('paper').addEventListener('click', () => {
+        answer.innerText = round('paper', getComputerChoice());
+        if (finalScore.innerText !== '') {
+            hideModal()
+        } else {
+            showModal();
+        }
+    })
+    document.getElementById('scissors').addEventListener('click', () => {
+        answer.innerText = round('scissors', getComputerChoice());
+        if (finalScore.innerText !== '') {
+            hideModal()
+        } else {
+            showModal();
+        }
+    })
 }
 
 game();
+
+
+function hideModal() {
+    modal.style.display = 'none'
+    const main = document.getElementById('main');
+    main.classList.remove('blur');
+}
+
+function showModal() {
+    modal.style.display = 'flex';
+    const main = document.getElementById('main');
+    main.classList.add('blur');
+    const xIcon = document.getElementById('x-icon');
+    xIcon.addEventListener('click', () => {
+        hideModal();
+    })
+}
