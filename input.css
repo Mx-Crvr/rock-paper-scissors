@@ -1,3 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.modal {
+    min-height: 25em;
+    min-width: 28em;
+    top: 20vh;
+    left: 33vw;
+    animation: opacity 0.75s 1;
+}
+
+@keyframes opacity {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100;
+    }
+}
+
+.modal-icon {
+    min-height: 14em;
+    min-width: 14em;
+}
+
+.blur {
+    box-shadow: 4000px 4000px inset #000000a3;
+}
+
+.x-icon {
+    position: absolute;
+    right: 1.5em;
+    top: 1.5em;
+    cursor: pointer;
+}
+
+@keyframes opacity2 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100;
+    }
+}
+
+#play-again {
+    animation: opacity2 2s 1;
+    transition: animation 2s ease-in-out;
+}
