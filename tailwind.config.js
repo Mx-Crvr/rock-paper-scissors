@@ -13,6 +13,19 @@ module.exports = {
       lg: '976px',
       xl: '1440px'
     },
+    minWidth: {
+      modal: '28em',  
+      mobileModal: '18em',  
+      icon: '14em',  
+      mobileIcon: '10em',
+    },
+    minHeight: {
+      modal: '25em',
+      mobileModal: '10em',
+      icon: '14em',
+      mobileIcon: '10em',
+    },
+    
     extend: {},
   },
   plugins: [],

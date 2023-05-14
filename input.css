@@ -3,11 +3,16 @@
 @tailwind utilities;
 
 .modal {
-    min-height: 25em;
-    min-width: 28em;
     top: 20vh;
     left: 33vw;
     animation: opacity 0.75s 1;
+}
+
+@media (max-width: 480px) {
+    .modal {
+        top: 29vh;
+        left: 11vw;
+    }
 }
 
 @keyframes opacity {
@@ -20,10 +25,6 @@
     }
 }
 
-.modal-icon {
-    min-height: 14em;
-    min-width: 14em;
-}
 
 .blur {
     box-shadow: 4000px 4000px inset #000000a3;
