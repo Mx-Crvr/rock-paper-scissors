@@ -16,6 +16,19 @@ let playerScore = 0
 let computerScore = 0
 const finalScore = document.getElementById('final-score');
 
+playAgain.addEventListener('click', () => {
+    // pScoreDisplay.innerText = 'Player: 0';
+    // cScoreDisplay.innerText = 'Computer: 0';
+    // pScoreDisplay.style.display = 'block';
+    // cScoreDisplay.style.display = 'block';
+    // document.getElementById('rock').style.display = 'block';
+    // document.getElementById('paper').style.display = 'block';
+    // document.getElementById('scissors').style.display = 'block';
+    // finalScore.innerText = '';
+    // playAgain.style.display = 'none';
+    window.location.reload()
+})
+
 function round(playerChoice, computerChoice) {
     const winner = document.getElementById('winner');
 
@@ -91,8 +104,6 @@ function round(playerChoice, computerChoice) {
         }
 }
 
-
-
 function game() {
     const answer = document.getElementById('answer');
     hideModal()
@@ -123,7 +134,6 @@ function game() {
 }
 
 game();
-
 
 function hideModal() {
     modal.style.display = 'none'
