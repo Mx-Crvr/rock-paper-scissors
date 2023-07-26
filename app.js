@@ -17,15 +17,6 @@ let computerScore = 0
 const finalScore = document.getElementById('final-score');
 
 playAgain.addEventListener('click', () => {
-    // pScoreDisplay.innerText = 'Player: 0';
-    // cScoreDisplay.innerText = 'Computer: 0';
-    // pScoreDisplay.style.display = 'block';
-    // cScoreDisplay.style.display = 'block';
-    // document.getElementById('rock').style.display = 'block';
-    // document.getElementById('paper').style.display = 'block';
-    // document.getElementById('scissors').style.display = 'block';
-    // finalScore.innerText = '';
-    // playAgain.style.display = 'none';
     window.location.reload()
 })
 
@@ -62,10 +53,10 @@ function round(playerChoice, computerChoice) {
                 document.getElementById('paper').style.display = 'none';
                 document.getElementById('scissors').style.display = 'none';
                 hideModal();
-                finalScore.innerText = ('Player won the match by ') + (playerScore - computerScore) + (`, well done!`);
+                finalScore.innerText = ('You won the match by ') + (playerScore - computerScore) + (`, well done!`);
                 playAgain.style.display = 'block';
             } else {
-                winner.innerText = 'Player wins this round';
+                winner.innerText = 'You win this round';
                 winner.style.color = 'green';
                 return `Computer chose ${computerChoice}`;
             }
@@ -150,3 +141,12 @@ function showModal() {
         hideModal();
     })
 }
+
+const startBtn = document.getElementById('startBtn');
+startBtn.addEventListener('click', () => {
+    startBtn.classList.add('hidden');
+    const display = document.getElementById('display');
+    display.classList.remove('hidden')
+    const h2 = document.getElementById('h2');
+    h2.classList.add('hidden')
+})
